@@ -43,8 +43,8 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="{{ route('about') }}">About</a></li>
+                            <li><a href="{{ route('contact') }}">Contact</a></li>
                             <li><a href="https://www.twitter.com/ajrmzcs"><span class="fa fa-twitter"></span></a></li>
                             <li><a href="https://github.com/ajrmzcs"><span class="fa fa-github"></span></a></li>
                             <li><a href="https://co.linkedin.com/in/antonioramirez75"><span class="fa fa-linkedin"></span></a></li>

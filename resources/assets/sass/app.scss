@@ -10,9 +10,6 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
-// Trix
-@import "~trix/dist/trix.css";
-
 body {
   background-color: #eee;
   margin: 0;
@@ -116,3 +113,18 @@ hr {
 .admin-button-padding {
   padding: 1rem 0 1rem 0;
 }
+
+.checkbox-custom-margin {
+  margin-left:0 !important;
+}
+
+.trix-editor {
+  min-height: 10em !important;
+}
+
+.about-img {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+}
+

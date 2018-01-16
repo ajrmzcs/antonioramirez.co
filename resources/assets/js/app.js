@@ -25,7 +25,9 @@ const app = new Vue({
     components: {homeposts,sidebar,postscategory,searchposts},
 });
 
-$(window).resize(function(){
-    console.log('holi');
-    $('.sidebar').css('min-height', '100%').css('min-height', '-=50px');
+$(document).ready(function(){
+
+    $('.trix-editor').css('min-height','10em');
+
 });
+

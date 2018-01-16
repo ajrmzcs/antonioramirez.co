@@ -10,7 +10,7 @@
             <div class="col-md-10 container-padding">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">Create new Category</h4>
+                        <h4 class="panel-title">Create new Post</h4>
                     </div>
                     <div class="panel-body">
                         {{--Alerts--}}
@@ -34,8 +34,8 @@
                             @endif
                         </div>
                         <div class="col-md-8 col-md-offset-2">
-                            <form method="POST" action="{{ route('admin.categories.store') }}">
-                                @include('adminCategories.form')
+                            <form method="POST" action="{{ route('admin.posts.store') }}">
+                                @include('adminPosts.form')
                             </form>
                         </div>
                     </div>

@@ -20,6 +20,13 @@ class Post extends Model
     ];
 
     /**
+     * Cast variables
+     */
+    protected $casts = [
+        'published' => 'boolean',
+    ];
+
+    /**
      * Post relationship
      */
     public function user()

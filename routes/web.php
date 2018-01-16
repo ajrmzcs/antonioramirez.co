@@ -43,6 +43,19 @@ Route::resource('admin/categories','AdminCategoryController',[
     ]
 ]);
 
+// Admin Posts
+Route::resource('admin/posts','AdminPostController',[
+    'except'=> ['show'],
+    'names' => [
+        'index' => 'admin.posts.index',
+        'create' => 'admin.posts.create',
+        'store' => 'admin.posts.store',
+        'edit' => 'admin.posts.edit',
+        'update' => 'admin.posts.update',
+        'destroy' => 'admin.posts.destroy',
+    ]
+]);
+
 // Front
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'AboutController@index')->name('about');

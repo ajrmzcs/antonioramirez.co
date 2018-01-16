@@ -34,9 +34,9 @@
                             @endif
                         </div>
                         <div class="col-md-8 col-md-offset-2">
-                            <form method="POST" action="/admin/categories/{{ $category->id }}">
+                            <form method="POST" action="/admin/posts/{{ $post->id }}">
                                 {{ method_field('PATCH') }}
-                                @include('adminCategories.form')
+                                @include('adminPosts.form')
                             </form>
                         </div>
                     </div>

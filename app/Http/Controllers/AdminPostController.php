@@ -26,7 +26,9 @@ class AdminPostController extends Controller
      */
     public function index()
     {
-        $categories = Post::simplePaginate(5);
+        $posts = Post::with(['user','categories'])
+            ->orderBy('updated_at','DESC')
+            ->simplePaginate(5);
 
         $year = date('Y');
 
@@ -42,9 +44,13 @@ class AdminPostController extends Controller
     {
         $post = new Post(); // Empty model to be able to use one partial for create/edit
 
+        $categories = Category::all();
+
+        $dbCategories = [];
+
         $year = date('Y');
 
-        return view('adminPosts.create', compact('post', 'year'));
+        return view('adminPosts.create', compact('post', 'categories', 'dbCategories', 'year'));
     }
 
     /**
@@ -62,7 +68,6 @@ class AdminPostController extends Controller
             'excerpt' => 'required | min:5',
             'slug' => 'required | min:5 | max:100',
             'published' => 'required | boolean',
-            'user_id' => 'required | integer',
             'categories' => 'required | array',
         ]);
 
@@ -74,7 +79,7 @@ class AdminPostController extends Controller
                 'excerpt' => $request->excerpt,
                 'slug' => $request->slug,
                 'published' => $request->published,
-                'user_id' => $request->user_id,
+                'user_id' => auth()->user()->id,
             ]);
 
             $post->categories()->attach($request->categories);
@@ -98,11 +103,23 @@ class AdminPostController extends Controller
     public function edit($id)
     {
 
-        $category = Post::findOrFail($id);
+        $post = Post::with('categories')->where('id',$id)->firstOrFail();
+
+//        dd($post->toArray());
+
+        $categories = Category::all();
+
+        $dbCategories = [];
+
+        foreach ($post->categories as $dbCategory) {
+
+            array_push($dbCategories,$dbCategory->id);
+
+        }
 
         $year = date('Y');
 
-        return view('adminPosts.edit', compact('post', 'year'));
+        return view('adminPosts.edit', compact('post', 'categories', 'dbCategories', 'year'));
     }
 
     /**
@@ -121,7 +138,6 @@ class AdminPostController extends Controller
             'excerpt' => 'required | min:5',
             'slug' => 'required | min:5 | max:100',
             'published' => 'required | boolean',
-            'user_id' => 'required | integer',
             'categories' => 'required | array',
         ]);
 
@@ -132,9 +148,9 @@ class AdminPostController extends Controller
             $post->title = $request->title;
             $post->body= $request->body;
             $post->excerpt = $request->excerpt;
-            $post->slub = $request->slub;
-            $post->name = $request->name;
-            $post->user_id = $request->user_id;
+            $post->slug = $request->slug;
+            $post->published = $request->published;
+            $post->user_id = auth()->user()->id;
 
             $post->save();
 

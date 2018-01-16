@@ -8,7 +8,7 @@
 </h4>
 <hr>
 <h4 class="sidebar-menu text-left">
-    <a href="{{ route('admin.users.index') }}"><span class="fa fa-pencil"></span> Posts</a>
+    <a href="{{ route('admin.posts.index') }}"><span class="fa fa-pencil"></span> Posts</a>
 </h4>
 <hr>
 <h4 class="sidebar-menu text-left">

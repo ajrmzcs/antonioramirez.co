@@ -4,7 +4,6 @@ import Vue from 'vue';
 import VueAxios from 'vue-axios';
 import axios from 'axios';
 import algoliasearch from 'algoliasearch';
-import trix from 'trix';
 
 window._ = lodash;
 
@@ -51,9 +50,6 @@ Vue.use(VueAxios, axios);
 
 // Export vue to window
 window.Vue = Vue;
-
-// Trix
-window.trix = trix;
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
