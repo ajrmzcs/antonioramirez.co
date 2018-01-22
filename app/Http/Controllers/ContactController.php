@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\FormMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -36,6 +37,7 @@ class ContactController extends Controller
 
         try {
 
+            Mail::to('ajrmzcs@gmail.com')->send(New FormMail($request));
 
             return redirect()->route('contact')->with('status', 'Message sent');
 

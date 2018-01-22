@@ -3,12 +3,33 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h1 class="text-center">Hey, thank you for dropping me a line!!</h1>
+            <h1 class="text-center">Hey, thanks for dropping a line!!</h1>
             <br>
         </div>
         <div class="row">
+            {{--Alerts--}}
             <div class="col-md-6 col-md-offset-3 col-xs-12">
-                <form action="{{ route('send') }}">
+                {{--Success--}}
+                @if (session('status'))
+                    <div class="alert alert-success fade in">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        {{ session('status') }}
+                    </div>
+                @endif
+                {{--Error--}}
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            <a href="#" class="close" data-dismiss="alert">&times;</a>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
+            <div class="col-md-6 col-md-offset-3 col-xs-12">
+                <form method="POST" action="{{ route('send') }}">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label for="name">Name</label>

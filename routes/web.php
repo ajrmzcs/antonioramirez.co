@@ -60,7 +60,7 @@ Route::resource('admin/posts','AdminPostController',[
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/about', 'AboutController@index')->name('about');
 Route::get('/contact', 'ContactController@index')->name('contact');
-Route::post('/send', 'ContactController@send')->name('send');
+Route::post('send', 'ContactController@send')->name('send');
 Route::get('/category/{id}', 'CategoryController@index')->name('category');
 
 // Put this route always at the bottom of the file to ensure that the other routes are evaluated before
