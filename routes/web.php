@@ -11,11 +11,13 @@
 |
 */
 
-// TODO: replace auth routes for only login and password related routes
-Auth::routes();
+// Use own auth routes to avoid register new users - forgot password is also disabled
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 
 // Admin
-Route::get('/admin', 'AdminController@index')->name('admin');
+Route::get('admin', 'AdminController@index')->name('admin');
 
 // Admin Users
 Route::resource('admin/users','AdminUserController',[

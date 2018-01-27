@@ -8,7 +8,7 @@
             <h1>{{ $post->title }}</h1>
             <p>Posted on: {{ $post->updated_at->format('D, d M Y')  }}</p>
             <p>Categories:
-                @foreach($post->category as $category)
+                @foreach($post->categories as $category)
                     <a href="{{ url('category/'.$category->id) }}">{{ $category->name }}</a>
                 @endforeach
             </p>

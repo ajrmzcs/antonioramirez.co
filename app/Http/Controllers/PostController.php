@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index($slug)
     {
-        $post = Post::with('category')->where('slug',$slug)->first();
+        $post = Post::with('categories')->where('slug',$slug)->first();
 
         $year = date('Y');
 
