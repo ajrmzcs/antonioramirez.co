@@ -38,7 +38,7 @@
             showResults() {
                 this.index.search({query: this.query}, (error, results) => {
                     this.hits = results.hits;
-                    console.log(this.hits);
+                    // console.log(this.hits);
                 });
             }
         }

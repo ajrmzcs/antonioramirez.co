@@ -40,7 +40,7 @@
         },
         mounted() {
             this.getPosts(this.url);
-            console.log('Component mounted.');
+            // console.log('Component mounted.');
         },
         methods: {
             getPosts(url) {
@@ -55,7 +55,7 @@
                         this.prevPage = response.data.prev_page_url;
                         this.nextPage = response.data.next_page_url;
 
-                        console.log(response);
+                        // console.log(response);
 
                     });
             }
