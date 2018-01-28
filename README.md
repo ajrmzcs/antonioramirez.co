@@ -1,7 +1,5 @@
 # ![alt text](https://raw.githubusercontent.com/ajrmzcs/antonioramirez.co/master/public/img/ar-brand.png) [http://antonioramirez.co](https://antonioramirez.co "My personal Blog")
 
----
-
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
 This is an open source personal blog, build in PHP with Laravel.
