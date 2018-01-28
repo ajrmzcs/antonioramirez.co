@@ -6,7 +6,7 @@ This is the source code of my Personal Blog
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
 This is an open source personal blog, build in PHP with Laravel.
----
+
 ## Installation
 
 ### Step 1
