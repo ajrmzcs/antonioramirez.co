@@ -32,4 +32,5 @@ In case you want to add sample data use the following command and follow the ins
 php artisan insert:sample-data
 ```
 This will create sample users, categories and posts for you to start testing the code.
----
+
+
