@@ -34,6 +34,7 @@ class HomeController extends Controller
     public function getPosts()
     {
         $posts = DB::table('posts')->select('id','title','excerpt', 'slug', 'updated_at')
+            ->where('published', true)
             ->orderBy('updated_at','DESC')
             ->simplePaginate(5);
 
