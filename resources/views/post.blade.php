@@ -13,7 +13,7 @@
                 @endforeach
             </p>
             <br>
-            <p class="text_justify">{ !!$post->body!! }</p>
+            <p class="text_justify">{!! $post->body !!}</p>
         </div>
         <!--Sidebar-->
         <sidebar></sidebar>
