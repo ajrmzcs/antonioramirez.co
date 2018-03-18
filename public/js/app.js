@@ -65644,12 +65644,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     filters: {
         ago: function ago(date) {
-            return __WEBPACK_IMPORTED_MODULE_0_moment___default()(date).fromNow();
+            return __WEBPACK_IMPORTED_MODULE_0_moment___default()(date).format('MMMM Do YYYY, h:mm:ss a');
         }
     },
     mounted: function mounted() {
         this.getPosts(this.url);
-        console.log('Component mounted.');
     },
 
     methods: {
@@ -65665,8 +65664,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 _this.currentPage = response.data.current_page;
                 _this.prevPage = response.data.prev_page_url;
                 _this.nextPage = response.data.next_page_url;
-
-                console.log(response);
             });
         }
     }
@@ -65941,7 +65938,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "col-md-8" }, [
-    _c("h2", [_vm._v("Recent entries")]),
+    _c("h3", [_vm._v("Recent entries")]),
     _vm._v(" "),
     _c("hr"),
     _vm._v(" "),
@@ -65958,17 +65955,21 @@ var render = function() {
                   _c("h3", [_vm._v(_vm._s(post.title))])
                 ]),
                 _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(post.excerpt))]),
+                _c("p", { staticClass: "no-margin-bottom" }, [
+                  _vm._v(_vm._s(post.excerpt))
+                ]),
                 _vm._v(" "),
-                _c("small", [_vm._v(_vm._s(_vm._f("ago")(post.updated_at)))])
+                _c("small", { staticClass: "posted-on" }, [
+                  _vm._v("Posted on: " + _vm._s(_vm._f("ago")(post.updated_at)))
+                ])
               ])
             }),
             _vm._v(" "),
-            _c("div", { staticClass: "text-center" }, [
+            _c("div", { staticClass: "text-right button-margin-top" }, [
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-outline-primary button-margin",
+                  staticClass: "btn btn-primary button-margin",
                   attrs: { type: "button", disabled: _vm.prevPage === null },
                   on: {
                     click: function($event) {
@@ -65976,13 +65977,13 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("<< Prev ")]
+                [_vm._v("← Prev ")]
               ),
               _vm._v(" "),
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-outline-primary button-margin",
+                  staticClass: "btn btn-primary button-margin",
                   attrs: { type: "button", disabled: _vm.nextPage === null },
                   on: {
                     click: function($event) {
@@ -65990,7 +65991,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Next >>")]
+                [_vm._v("Next →")]
               )
             ])
           ],
@@ -66063,6 +66064,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -66174,7 +66178,19 @@ var staticRenderFns = [
         _c("h4", { staticClass: "panel-title" }, [_vm._v("Projects")])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "panel-body" })
+      _c("div", { staticClass: "panel-body" }, [
+        _c("ul", [
+          _c("li", [
+            _c(
+              "a",
+              {
+                attrs: { href: "https://github.com/ajrmzcs/antonioramirez.co" }
+              },
+              [_vm._v("This site Github Repository")]
+            )
+          ])
+        ])
+      ])
     ])
   }
 ]
@@ -66282,7 +66298,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     filters: {
         ago: function ago(date) {
-            return __WEBPACK_IMPORTED_MODULE_0_moment___default()(date).fromNow();
+            return __WEBPACK_IMPORTED_MODULE_0_moment___default()(date).format('MMMM Do YYYY, h:mm:ss a');
         }
     },
     mounted: function mounted() {
@@ -66327,7 +66343,7 @@ var render = function() {
       : _c(
           "div",
           [
-            _c("h2", [
+            _c("h3", [
               _vm._v("Posts in category: " + _vm._s(_vm.categoryName))
             ]),
             _vm._v(" "),
@@ -66349,7 +66365,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-outline-primary button-margin",
+                  staticClass: "btn btn-primary button-margin",
                   attrs: { type: "button", disabled: _vm.prevPage === null },
                   on: {
                     click: function($event) {
@@ -66363,7 +66379,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-outline-primary button-margin",
+                  staticClass: "btn btn-primary button-margin",
                   attrs: { type: "button", disabled: _vm.nextPage === null },
                   on: {
                     click: function($event) {
@@ -66489,7 +66505,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.index.search({ query: this.query }, function (error, results) {
                 _this.hits = results.hits;
-                console.log(_this.hits);
             });
         }
     }

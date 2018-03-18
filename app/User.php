@@ -50,6 +50,8 @@ class User extends Authenticatable
 
     /**
      * Checks if User has access to $permissions.
+     * @param array $permissions
+     * @return bool
      */
     public function hasAccess(array $permissions) : bool
     {

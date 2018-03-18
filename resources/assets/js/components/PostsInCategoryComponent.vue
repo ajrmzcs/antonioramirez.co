@@ -5,7 +5,7 @@
             <i class="fa fa-spinner fa-spin fa-2x"></i>
         </div>
         <div v-else="isLoading">
-            <h2>Posts in category: {{ categoryName }}</h2>
+            <h3>Posts in category: {{ categoryName }}</h3>
             <hr>
             <div v-for="post in posts">
                 <a v-bind:href="post.slug"><h3>{{ post.title }}</h3></a>
@@ -13,8 +13,8 @@
                 <small>{{ post.updated_at | ago }}</small>
             </div>
             <div class="text-center">
-                <button type="button" class="btn btn-outline-primary button-margin" :disabled="prevPage === null" v-on:click="getPosts(prevPage)"><< Prev </button>
-                <button type="button" class="btn btn-outline-primary button-margin" :disabled="nextPage === null" v-on:click="getPosts(nextPage)">Next >></button>
+                <button type="button" class="btn btn-primary button-margin" :disabled="prevPage === null" v-on:click="getPosts(prevPage)"><< Prev </button>
+                <button type="button" class="btn btn-primary button-margin" :disabled="nextPage === null" v-on:click="getPosts(nextPage)">Next >></button>
             </div>
         </div>
         <br>
@@ -37,7 +37,7 @@
         },
         filters: {
             ago(date) {
-                return moment(date).fromNow();
+                return moment(date).format('MMMM Do YYYY, h:mm:ss a');
             }
         },
         mounted() {

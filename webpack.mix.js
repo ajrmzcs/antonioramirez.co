@@ -13,4 +13,8 @@ let mix = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css')
-   .copy('resources/assets/css/trix.css', 'public/css');
+   .copy('resources/assets/css/trix.css', 'public/css')
+   .copy('resources/assets/css/clean-blog.min.css', 'public/css')
+   .copy('resources/assets/js/jqBootstrapValidation.js', 'public/js')
+   .copy('resources/assets/js/contact_me.js', 'public/js')
+   .copy('resources/assets/js/clean-blog.min.js', 'public/js');

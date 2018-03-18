@@ -11404,7 +11404,7 @@ button.close {
 }
 
 body {
-  background-color: #eee;
+  background-color: #FFF;
   margin: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11532,5 +11532,22 @@ hr {
 
 .about-label-margin {
   margin: 0.5rem;
+}
+
+.posted-on {
+  color: #777;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+
+.button-margin-top {
+  margin-top: 2rem;
+}
+
+.link-in-content p a {
+  color: #c5c1c1 !important;
+  text-decoration: none !important;
 }
 
