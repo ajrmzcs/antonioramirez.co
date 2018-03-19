@@ -6,7 +6,7 @@
         <div style="position:absolute;top:36px;" v-if="query.length" class="dropdown-content">
             <ul v-for="hit in hits">
                 <li>
-                    <a v-bind:href="hit.slug">{{ hit.title }}</a>
+                    <a class="search-result" v-bind:href="hit.slug">{{ hit.title }}</a>
                     <hr>
                 </li>
             </ul>
