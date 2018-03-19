@@ -34,7 +34,7 @@
                             @endif
                         </div>
                         <div class="col-md-8 col-md-offset-2">
-                            <form method="POST" action="/admin/posts/{{ $post->id }}">
+                            <form method="POST" action="{{ route('admin.posts.update', ['post' => $post->id]) }}" enctype="multipart/form-data">
                                 {{ method_field('PATCH') }}
                                 @include('adminPosts.form')
                             </form>

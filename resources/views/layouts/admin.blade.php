@@ -17,7 +17,7 @@
 <body>
     <div id="app" class="wrapper">
         <nav class="navbar navbar-inverse navbar-static-top navbar-admin">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
@@ -29,8 +29,8 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('adminUsers') }}">
-                        Simple light CMS - 0.3
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        antonioramirez.co
                     </a>
                 </div>
 
@@ -74,11 +74,6 @@
         @yield('content')
 
     </div>
-    <footer class="footer-admin">
-        <div class="container">
-            <p class="footer-text text-center">{{ $year }} - Antonio Ramirez</p>
-        </div>
-    </footer>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/0.11.1/trix.js"></script>

@@ -34,7 +34,7 @@
                             @endif
                         </div>
                         <div class="col-md-8 col-md-offset-2">
-                            <form method="POST" action="{{ route('admin.posts.store') }}">
+                            <form method="POST" action="{{ route('admin.posts.store') }}" enctype="multipart/form-data">
                                 @include('adminPosts.form')
                             </form>
                         </div>

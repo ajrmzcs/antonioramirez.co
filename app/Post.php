@@ -4,10 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
+use Spatie\MediaLibrary\Media;
 
-class Post extends Model
+
+class Post extends Model implements HasMediaConversions
 {
 
+    use HasMediaTrait;
     use Searchable;
 
     /**
@@ -64,6 +69,13 @@ class Post extends Model
         // Customize array...
 
         return $array;
+    }
+
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->height(50)
+            ->width(50);
     }
 
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class AdminPostController extends Controller
@@ -69,6 +70,7 @@ class AdminPostController extends Controller
             'slug' => 'required | min:5 | max:100',
             'published' => 'required | boolean',
             'categories' => 'required | array',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         try {
@@ -83,6 +85,13 @@ class AdminPostController extends Controller
             ]);
 
             $post->categories()->attach($request->categories);
+
+            // Save image to storage in local disk
+            $path = Storage::putFile('posts-images',$request->file('image'));
+
+            // Move image to media disk and associate to model
+            $post->addMedia(storage_path('app/').$path)
+                ->toMediaCollection();
 
             return redirect()->route('admin.posts.index')->with('status', 'Post added');
 
@@ -104,6 +113,7 @@ class AdminPostController extends Controller
     {
 
         $post = Post::with('categories')->where('id',$id)->firstOrFail();
+        $mediaItems = $post->getMedia();
 
 //        dd($post->toArray());
 
@@ -155,6 +165,18 @@ class AdminPostController extends Controller
             $post->save();
 
             $post->categories()->sync($request->categories);
+
+            // Delete previous image
+            $mediaItems = $post->getMedia();
+
+            $mediaItems[0]->delete();
+
+            // Save image to storage in local disk
+            $path = Storage::putFile('posts-images',$request->file('image'));
+
+            // Move image to media disk and associate to model
+            $post->addMedia(storage_path('app/').$path)
+                ->toMediaCollection();
 
             return redirect()->route('admin.posts.index')->with('status', 'Post edited');
 

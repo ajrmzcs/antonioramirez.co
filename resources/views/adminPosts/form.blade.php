@@ -29,6 +29,11 @@
     <trix-editor input="body"></trix-editor>
 </div>
 <div class="form-group">
+    <label for="image">Image</label>
+    <input type="file" class="form-control" id="image" name="image" placeholder="Insert post image"
+           value="{{ old('image') }}">
+</div>
+<div class="form-group">
     <label for="name">Status</label>
     <select class="form-control" name="published">
         <option value="">-- Select status --</option>

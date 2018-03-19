@@ -11467,6 +11467,7 @@ hr {
 
 .navbar-admin {
   margin-bottom: 0;
+  background-color: #222 !important;
 }
 
 .sidebar {
