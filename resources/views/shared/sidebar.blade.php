@@ -15,3 +15,4 @@
     <a href="{{ route('admin.users.index') }}"><span class="fa fa-user-o"></span> Users</a>
 </h4>
 <hr>
+<br>

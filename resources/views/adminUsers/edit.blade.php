@@ -3,11 +3,11 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2 sidebar">
+            <div class="col-sm-3 col-md-2 sidebar">
                 @include('shared.sidebar')
             </div>
             {{--Main content--}}
-            <div class="col-md-10 container-padding">
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">Edit user</h4>
@@ -34,7 +34,7 @@
                             @endif
                         </div>
                         <div class="col-md-8 col-md-offset-2">
-                            <form method="POST" action="/admin/users/{{ $user->id }}">
+                            <form method="POST" action="/admin/users/{{ $user->id }}" enctype="multipart/form-data">
                                 {{ method_field('PATCH') }}
                                 @include('adminUsers.form')
                             </form>

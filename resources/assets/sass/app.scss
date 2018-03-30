@@ -69,12 +69,6 @@ hr {
   background-color: #222 !important;
 }
 
-.sidebar {
-  padding-top: auto;
-  background-color: rgba(0, 0, 0, 0.7);
-  min-height: calc(100vh - 50px);
-}
-
 .dropdown-content {
   background-color: #f9f9f9;
   border-color: #c5c1c1;
@@ -154,4 +148,12 @@ hr {
   color: #333 !important;
   text-transform: none !important;
   padding:0 !important;
+}
+
+.avatar-nav {
+  margin: 5px 5px 5px 20px;
+}
+
+.front-logout {
+  color: #333333 !important;
 }

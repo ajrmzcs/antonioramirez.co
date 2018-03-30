@@ -4,9 +4,13 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
+use Spatie\MediaLibrary\Media;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasMediaConversions
 {
+    use HasMediaTrait;
     use Notifiable;
 
     /**
@@ -70,6 +74,18 @@ class User extends Authenticatable
     public function inRole(string $roleSlug)
     {
         return $this->roles()->where('slug', $roleSlug)->count() == 1;
+    }
+
+    /**
+     * @param Media|null $media
+     * @throws \Spatie\Image\Exceptions\InvalidManipulation
+     */
+    public function registerMediaConversions(Media $media = null)
+    {
+        $this->addMediaConversion('thumb')
+            ->height(44)
+            ->width(44)
+            ->border(1,'#fff');
     }
 
 

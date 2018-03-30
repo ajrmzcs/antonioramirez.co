@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class AdminUserController extends Controller
@@ -29,9 +30,7 @@ class AdminUserController extends Controller
             ->orderBy('created_at', 'DESC')
             ->simplePaginate(5);
 
-        $year = date('Y');
-
-        return view('adminUsers.userList', compact('users', 'year'));
+        return view('adminUsers.userList', compact('users'));
     }
 
     /**
@@ -45,9 +44,7 @@ class AdminUserController extends Controller
 
         $dbRoles = null; // Empty array to be able to use one partial for create/edit
 
-        $year = date('Y');
-
-        return view('adminUsers.create', compact('user', 'dbRoles', 'year'));
+        return view('adminUsers.create', compact('user', 'dbRoles'));
     }
 
     /**
@@ -63,7 +60,8 @@ class AdminUserController extends Controller
             'name' => 'required | min:5 | max:100',
             'email' => 'required | email | unique:users',
             'roles' => 'required | array',
-            'password' => 'required | min:5 | max:20 | confirmed'
+            'password' => 'required | min:5 | max:20 | confirmed',
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         try {
@@ -75,6 +73,13 @@ class AdminUserController extends Controller
             ]);
 
             $user->roles()->attach($request->roles);
+
+            // Save image to storage in local disk
+            $path = Storage::putFile('avatar-images',$request->file('avatar'));
+
+            // Move image to media disk and associate to model
+            $user->addMedia(storage_path('app/').$path)
+                ->toMediaCollection();
 
             return redirect()->route('admin.users.index')->with('status', 'User added');
 
@@ -115,9 +120,7 @@ class AdminUserController extends Controller
 
         }
 
-        $year = date('Y');
-
-        return view('adminUsers.edit', compact('user', 'dbRoles', 'year'));
+        return view('adminUsers.edit', compact('user', 'dbRoles'));
     }
 
     /**
@@ -151,6 +154,20 @@ class AdminUserController extends Controller
             $user->save();
 
             $user->roles()->sync($request->roles);
+
+            // Delete previous image if exists
+            $mediaItems = $user->getMedia() ?? null;
+
+            if (empty($mediaItems)) {
+                $mediaItems[0]->delete();
+            }
+
+            // Save image to storage in local disk
+            $path = Storage::putFile('avatar-images',$request->file('avatar'));
+
+            // Move image to media disk and associate to model
+            $user->addMedia(storage_path('app/').$path)
+                ->toMediaCollection();
 
             return redirect()->route('admin.users.index')->with('status', 'User edited');
 

@@ -31,9 +31,7 @@ class AdminPostController extends Controller
             ->orderBy('updated_at','DESC')
             ->simplePaginate(5);
 
-        $year = date('Y');
-
-        return view('adminPosts.postsList', compact('posts', 'year'));
+        return view('adminPosts.postsList', compact('posts'));
     }
 
     /**
@@ -49,9 +47,7 @@ class AdminPostController extends Controller
 
         $dbCategories = [];
 
-        $year = date('Y');
-
-        return view('adminPosts.create', compact('post', 'categories', 'dbCategories', 'year'));
+        return view('adminPosts.create', compact('post', 'categories', 'dbCategories'));
     }
 
     /**
@@ -127,9 +123,7 @@ class AdminPostController extends Controller
 
         }
 
-        $year = date('Y');
-
-        return view('adminPosts.edit', compact('post', 'categories', 'dbCategories', 'year'));
+        return view('adminPosts.edit', compact('post', 'categories', 'dbCategories'));
     }
 
     /**

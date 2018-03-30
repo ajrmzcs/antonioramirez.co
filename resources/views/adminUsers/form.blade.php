@@ -38,5 +38,9 @@
     <label for="password_confirmation">Confirm your password</label>
     <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Confirm your password">
 </div>
+<div class="form-group">
+    <label for="avatar">Avatar</label>
+    <input type="file" class="form-control" id="avatar" name="avatar">
+</div>
 <button type="submit" class="btn btn-primary">Submit</button>&nbsp;&nbsp;
 <button type="reset" class="btn btn-danger">Reset</button>
