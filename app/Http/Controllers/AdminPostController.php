@@ -160,10 +160,12 @@ class AdminPostController extends Controller
 
             $post->categories()->sync($request->categories);
 
-            // Delete previous image
-            $mediaItems = $post->getMedia();
+            // Delete previous image if exists
+            $mediaItems = $post->getMedia() ?? null;
 
-            $mediaItems[0]->delete();
+            if (isset($mediaItems[0])) {
+                $mediaItems[0]->delete();
+            }
 
             // Save image to storage in local disk
             $path = Storage::putFile('posts-images',$request->file('image'));

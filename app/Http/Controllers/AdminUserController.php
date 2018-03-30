@@ -158,7 +158,7 @@ class AdminUserController extends Controller
             // Delete previous image if exists
             $mediaItems = $user->getMedia() ?? null;
 
-            if (empty($mediaItems)) {
+            if (isset($mediaItems[0])) {
                 $mediaItems[0]->delete();
             }
 
