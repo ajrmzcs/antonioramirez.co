@@ -66,7 +66,7 @@ class AdminPostController extends Controller
             'slug' => 'required | min:5 | max:100',
             'published' => 'required | boolean',
             'categories' => 'required | array',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         try {
@@ -143,6 +143,7 @@ class AdminPostController extends Controller
             'slug' => 'required | min:5 | max:100',
             'published' => 'required | boolean',
             'categories' => 'required | array',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         try {
